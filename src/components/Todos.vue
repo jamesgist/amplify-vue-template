@@ -31,6 +31,10 @@ function createTodo() {
   listTodos();
 });
 
+function deleteTodo(id: string) {
+    client.models.Todo.delete({ id })
+  }
+
 </script>
 
 <template>
@@ -39,6 +43,7 @@ function createTodo() {
     <button @click="createTodo">+ new</button>
     <ul>
       <li 
+        @click="deleteTodo(todo.id)"
         v-for="todo in todos" 
         :key="todo.id">
         {{ todo.content }}
